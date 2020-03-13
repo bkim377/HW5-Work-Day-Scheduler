@@ -18,6 +18,8 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Work Day Scheduler</title>
   </head>
@@ -29,82 +31,9 @@
       <p id="currentDay" class="lead"></p>
     </header>
 
-    <!-- Timeblocks go here -->
-    <div class="container">
-      <!-- 9am here -->
-      <div class="row">
-        <div id="9am" class="col-lg-2 time-block hour row">9am</div>
-        <textarea class="col-lg-9 row"></textarea>
-        <div class="col-lg-1 saveBtn"></div>
-      </div>
-    </div>
-    <div class="container">
-      <!-- 10am here -->
-      <div class="row">
-        <div id="10am" class="col-lg-2 time-block hour row">10am</div>
-        <textarea class="col-lg-9 row"></textarea>
-        <div class="col-lg-1 saveBtn"></div>
-      </div>
-    </div>
-    <div class="container">
-      <!-- 11am here -->
-      <div class="row">
-        <div id="11am" class="col-lg-2 time-block hour row">11am</div>
-        <textarea class="col-lg-9 row"></textarea>
-        <div class="col-lg-1 saveBtn"></div>
-      </div>
-    </div>
-    <div class="container">
-      <!-- 12pm here -->
-      <div class="row">
-        <div id="12pm" class="col-lg-2 time-block hour row">12pm</div>
-        <textarea class="col-lg-9 row"></textarea>
-        <div class="col-lg-1 saveBtn"></div>
-      </div>
-    </div>
-    <div class="container">
-      <!-- 1pm here -->
-      <div class="row">
-        <div id="1pm" class="col-lg-2 time-block hour row">1pm</div>
-        <textarea class="col-lg-9 row"></textarea>
-        <div class="col-lg-1 saveBtn"></div>
-      </div>
-    </div>
-    <div class="container">
-      <!-- 2pm here -->
-      <div class="row">
-        <div id="2pm" class="col-lg-2 time-block hour row">2pm</div>
-        <textarea class="col-lg-9 row"></textarea>
-        <div class="col-lg-1 saveBtn"></div>
-      </div>
-    </div>
-    <div class="container">
-      <!-- 3pm here -->
-      <div class="row">
-        <div id="3pm" class="col-lg-2 time-block hour row">3pm</div>
-        <textarea class="col-lg-9 row"></textarea>
-        <div class="col-lg-1 saveBtn"></div>
-      </div>
-    </div>
-    <div class="container">
-      <!-- 4pm here -->
-      <div class="row">
-        <div id="4pm" class="col-lg-2 time-block hour row">4pm</div>
-        <textarea class="col-lg-9 row"></textarea>
-        <div class="col-lg-1 saveBtn"></div>
-      </div>
-    </div>
-    <div class="container">
-      <!-- 5pm here -->
-      <div class="row">
-        <div id="5pm" class="col-lg-2 time-block hour row">5pm</div>
-        <textarea class="col-lg-9 row"></textarea>
-        <div class="col-lg-1 saveBtn"></div>
-      </div>
-    </div>
+   <div id="main-body"></div>
 
     <script src="script.js"></script>
-    <script src="moment.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   </body>
