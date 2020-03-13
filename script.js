@@ -25,15 +25,17 @@ for (var i = 0; i < hourArray.length; i++) {
     hourWrap.append(colwrap1);
     hourWrap.append(colwrap2);
     hourWrap.append(colwrap3);
+}
 
-    
 
-//     // adds new class name to each div to reference later for showing/hiding individually
-//     var cls = document.getElementsByClassName("time-block");
-//     for (n = 0; n < hourArray.length; n++) {
-//       cls[n].id("div_" + (n + 1));
-//     }
-// }
+    // adds new class name to each div to reference later for showing/hiding individually
+    var cls = $(".time-block");
+    for (n = 0; n < 3; n++) {
+      cls[n].append(hourArray[n] + "am");
+    }
+    for (n = 3; n < 9; n++) {
+      cls[n].append(hourArray[n] + "pm");
+}
 
 // taken from https://stackoverflow.com/questions/32540044/html-display-current-date/32540196
 // n = new Date();
@@ -44,7 +46,7 @@ for (var i = 0; i < hourArray.length; i++) {
 
 
 
-}
+
 
 var a = moment().toString();
     document.getElementById("currentDay").innerHTML = a;
