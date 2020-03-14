@@ -80,62 +80,72 @@ $(document).ready(function() {
     }
   }
 
-  // Clicking the save buttons adds the entered text to local storage
-  // var saveButton = $(".saveBtn");
-  // // for (var s = 0; s < 9; s++) {
-  // saveButton.on("click", function() {
-  //     event.preventDefault();
-  //     var textInput = $("#textbox"+(i+1));
-  //     localStorage.setItem("todoEvent", textInput.val());
-  //     alert("Event saved in local storage");
-  //     console.log("Event saved in local storage");
-  // });
-  // };
-
+// Individual save buttons for storing their respective text boxes' input values in localStorage
   //9AM
   $("#saveBtn1").on("click", function() {
     var event1 = $("#textbox1").val();
     localStorage.setItem("input1", event1);
+    alert("Event saved in local storage");
+      console.log("Event saved in local storage");
   });
-//   $(window).on()
+  $(window).on("beforeunload", function(){
+    $("#textbox1").append(localStorage.getItem("input1"));
+  });
+
   //10AM
   $("#saveBtn2").on("click", function() {
     var event2 = $("#textbox2").val();
     localStorage.setItem("input2", event2);
+    alert("Event saved in local storage");
+      console.log("Event saved in local storage");
   });
   //11AM
   $("#saveBtn3").on("click", function() {
     var event3 = $("#textbox3").val();
     localStorage.setItem("input3", event3);
+    alert("Event saved in local storage");
+      console.log("Event saved in local storage");
   });
   //12PM
   $("#saveBtn4").on("click", function() {
     var event4 = $("#textbox4").val();
     localStorage.setItem("input4", event4);
+    alert("Event saved in local storage");
+      console.log("Event saved in local storage");
   });
   //1PM
   $("#saveBtn5").on("click", function() {
     var event5 = $("#textbox5").val();
     localStorage.setItem("input5", event5);
+    alert("Event saved in local storage");
+      console.log("Event saved in local storage");
   });
   //2PM
   $("#saveBtn6").on("click", function() {
     var event6 = $("#textbox6").val();
     localStorage.setItem("input6", event6);
+    alert("Event saved in local storage");
+      console.log("Event saved in local storage");
   });
   //3PM
   $("#saveBtn7").on("click", function() {
     var event7 = $("#textbox7").val();
     localStorage.setItem("input7", event7);
+    alert("Event saved in local storage");
+      console.log("Event saved in local storage");
   });
   //4PM
   $("#saveBtn8").on("click", function() {
     var event8 = $("#textbox8").val();
     localStorage.setItem("input8", event8);
+    alert("Event saved in local storage");
+      console.log("Event saved in local storage");
   });
   //5PM
   $("#saveBtn9").on("click", function() {
     var event9 = $("#textbox9").val();
     localStorage.setItem("input9", event9);
+    alert("Event saved in local storage");
+      console.log("Event saved in local storage");
   });
 });
