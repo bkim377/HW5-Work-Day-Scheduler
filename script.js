@@ -1,14 +1,13 @@
-$(document).ready(function() { 
+$(document).ready(function() {
+  // Gets the current date and time and displays it on the top of the page
+  var a = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+  document.getElementById("currentDay").innerHTML = a;
 
-// Gets the current date and time and displays it on the top of the page
-var a = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
-document.getElementById("currentDay").innerHTML = a;
+  // Dynamically adds the timeblock rows and hours
+  hourArray = [9, 10, 11, 12, 1, 2, 3, 4, 5];
+  var wrapper = $("#main-body");
 
-// dynamically adds the tiemblock rows and hours
-hourArray = [9, 10, 11, 12, 1, 2, 3, 4, 5];
-var wrapper = $("#main-body");
-
-for (var i = 0; i < hourArray.length; i++) {
+  for (var i = 0; i < hourArray.length; i++) {
     var timeWrapper = $("<div>");
     timeWrapper.addClass("container");
 
@@ -20,77 +19,123 @@ for (var i = 0; i < hourArray.length; i++) {
     colwrap1.addClass("col-lg-2 time-block hour row");
     // A div for the second column (where you enter text)
     var colwrap2 = $("<textarea></textarea>");
-    colwrap2.attr("id", "textbox"+(i+1));
+    colwrap2.attr("id", "textbox" + (i + 1));
     colwrap2.addClass("col-lg-9 row past");
     // A div for the third column (save button)
     var colwrap3 = $("<button type='submit'></button>");
-    colwrap3.addClass("col-lg-1 saveBtn fas fa-save");
+    colwrap3.attr("id", "saveBtn" + (i + 1));
+    colwrap3.addClass("col-lg-1 saveBtn i:hover fas fa-save");
+    colwrap3.append("Save");
 
     wrapper.append(timeWrapper);
     timeWrapper.append(hourWrap);
     hourWrap.append(colwrap1);
     hourWrap.append(colwrap2);
     hourWrap.append(colwrap3);
-}
+  }
 
-// adds hour names for all timeblock rows
-    var cls = $(".time-block");
-    for (n = 0; n < 3; n++) {
-      cls[n].append(hourArray[n] + "am");
-    }
-    for (n = 3; n < 9; n++) {
-      cls[n].append(hourArray[n] + "pm");
-}
+  // Adds hour names for all timeblock rows
+  var cls = $(".time-block");
+  for (n = 0; n < 3; n++) {
+    cls[n].append(hourArray[n] + "am");
+  }
+  for (n = 3; n < 9; n++) {
+    cls[n].append(hourArray[n] + "pm");
+  }
 
-// Check each row to see if they are past, present, or future hours
-// and colorcode them accordingly
-// for loop 1: hours 9am-12pm
+  // Check each row to see if they are past, present, or future hours
+  // and colorcode them accordingly
 
-var colColor = $(".past");
-for (var i = 0; i < 4; i++) {
+  // For loop 1: hours 9am-12pm
+  var colColor = $(".past");
+  for (var i = 0; i < 4; i++) {
     if (hourArray[i] === moment().hour()) {
-        $("#textbox"+(i+1)).addClass("present").removeClass("past future");
+      $("#textbox" + (i + 1))
+        .addClass("present")
+        .removeClass("past future");
     } else if (hourArray[i] < moment().hour()) {
-        $("#textbox"+(i+1)).addClass("past").removeClass("present future");
-    } else if (hourArray[i] > moment().hour()){
-        $("#textbox"+(i+1)).addClass("future").removeClass("past present");
+      $("#textbox" + (i + 1))
+        .addClass("past")
+        .removeClass("present future");
+    } else if (hourArray[i] > moment().hour()) {
+      $("#textbox" + (i + 1))
+        .addClass("future")
+        .removeClass("past present");
     }
-}
-//for loop 2: hours 1pm-5pm
-for (var i = 4; i < 9; i++) {
-    if ((hourArray[i] + 12) === moment().hour()) {
-        $("#textbox"+(i+1)).addClass("present").removeClass("past future");
-    } else if ((hourArray[i] + 12) < moment().hour()) {
-        $("#textbox"+(i+1)).addClass("past").removeClass("present future");
-    } else if ((hourArray[i] + 12) > moment().hour()){
-        $("#textbox"+(i+1)).addClass("future").removeClass("past present");
+  }
+  // For loop 2: hours 1pm-5pm
+  for (var i = 4; i < 9; i++) {
+    if (hourArray[i] + 12 === moment().hour()) {
+      $("#textbox" + (i + 1))
+        .addClass("present")
+        .removeClass("past future");
+    } else if (hourArray[i] + 12 < moment().hour()) {
+      $("#textbox" + (i + 1))
+        .addClass("past")
+        .removeClass("present future");
+    } else if (hourArray[i] + 12 > moment().hour()) {
+      $("#textbox" + (i + 1))
+        .addClass("future")
+        .removeClass("past present");
     }
-}
+  }
 
-// function updateColors(){
-//             var currentTime = new Date().getHours();
-//             for (var i = 0; i < 3; i++) { 
-//             console.log(currentTime, $("#'${i}'").data("time"));
-//              if ($("#'${i}'").data("time") == currentTime){
-//                 $("#'text${i}'").addClass("present");
-//             } else if (currentTime < $("#'${i}'").data("time")) {
-//                 $("#'text${i}'").addClass("future");
-//             }
-//         }
-//     }
-    
-// setInterval(function() {
-//     updateColors();
-//     }, 1000);
+  // Clicking the save buttons adds the entered text to local storage
+  // var saveButton = $(".saveBtn");
+  // // for (var s = 0; s < 9; s++) {
+  // saveButton.on("click", function() {
+  //     event.preventDefault();
+  //     var textInput = $("#textbox"+(i+1));
+  //     localStorage.setItem("todoEvent", textInput.val());
+  //     alert("Event saved in local storage");
+  //     console.log("Event saved in local storage");
+  // });
+  // };
 
-// clicking the save buttons adds the entered text to local storage
-var saveButton = $(".saveBtn");
-saveButton.on("click", function() {
-    var textInput = $("box"+[i]).value;
-    window.localStorage["box"+[i]] = textInput;
-    localStorage.setItem("todoEvent", JSON.stringify(textInput));
-    alert("Event saved in local storage");
-    console.log("Event saved in local storage");
-});
-
+  //9AM
+  $("#saveBtn1").on("click", function() {
+    var event1 = $("#textbox1").val();
+    localStorage.setItem("input1", event1);
+  });
+//   $(window).on()
+  //10AM
+  $("#saveBtn2").on("click", function() {
+    var event2 = $("#textbox2").val();
+    localStorage.setItem("input2", event2);
+  });
+  //11AM
+  $("#saveBtn3").on("click", function() {
+    var event3 = $("#textbox3").val();
+    localStorage.setItem("input3", event3);
+  });
+  //12PM
+  $("#saveBtn4").on("click", function() {
+    var event4 = $("#textbox4").val();
+    localStorage.setItem("input4", event4);
+  });
+  //1PM
+  $("#saveBtn5").on("click", function() {
+    var event5 = $("#textbox5").val();
+    localStorage.setItem("input5", event5);
+  });
+  //2PM
+  $("#saveBtn6").on("click", function() {
+    var event6 = $("#textbox6").val();
+    localStorage.setItem("input6", event6);
+  });
+  //3PM
+  $("#saveBtn7").on("click", function() {
+    var event7 = $("#textbox7").val();
+    localStorage.setItem("input7", event7);
+  });
+  //4PM
+  $("#saveBtn8").on("click", function() {
+    var event8 = $("#textbox8").val();
+    localStorage.setItem("input8", event8);
+  });
+  //5PM
+  $("#saveBtn9").on("click", function() {
+    var event9 = $("#textbox9").val();
+    localStorage.setItem("input9", event9);
+  });
 });
